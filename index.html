@@ -5,54 +5,88 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
   <title>سياسة الخصوصية — Infinite Aura</title>
+
+  <!-- App / Site Icon (Infinite Aura) -->
   <link rel="apple-touch-icon" sizes="180x180" href="https://infiniteauraapp.github.io/InfiniteAuraPrivacyPoclicy_ar/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://infiniteauraapp.github.io/InfiniteAuraPrivacyPoclicy_ar/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://infiniteauraapp.github.io/InfiniteAuraPrivacyPoclicy_ar/favicon-16x16.png">
   <link rel="shortcut icon" href="https://infiniteauraapp.github.io/InfiniteAuraPrivacyPoclicy_ar/favicon.ico">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <meta name="theme-color" content="#0b0c10">
+  <meta name="msapplication-TileColor" content="#0b0c10">
+
   <style>
     :root{
       --bg: #0b0c10;
-      --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.09);
-      --text: rgba(255,255,255,.92);
+      --surface: rgba(255,255,255,.05);
+      --surface2: rgba(255,255,255,.08);
+      --text: rgba(255,255,255,.93);
       --muted: rgba(255,255,255,.72);
-      --border: rgba(255,255,255,.14);
+      --border: rgba(255,255,255,.12);
       --accent: #7c5cff;
-      --ok: #25d366;
-      --warn: #ffb020;
-      --bad: #ff4d4f;
-      --shadow: 0 10px 28px rgba(0,0,0,.35);
+      --accent2: #25d366;
+      --shadow: 0 16px 40px rgba(0,0,0,.35);
       --radius: 18px;
-      --max: 1060px;
+      --max: 1120px;
+
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans Arabic", "Noto Kufi Arabic", "Apple Color Emoji","Segoe UI Emoji";
+
+      --pad: clamp(14px, 1.6vw, 22px);
+      --gap: clamp(12px, 1.4vw, 18px);
     }
+
     @media (prefers-color-scheme: light){
       :root{
         --bg: #f6f7fb;
-        --card: rgba(0,0,0,.04);
-        --card2: rgba(0,0,0,.06);
+        --surface: rgba(0,0,0,.045);
+        --surface2: rgba(0,0,0,.065);
         --text: rgba(0,0,0,.92);
-        --muted: rgba(0,0,0,.68);
+        --muted: rgba(0,0,0,.64);
         --border: rgba(0,0,0,.12);
-        --shadow: 0 10px 28px rgba(0,0,0,.12);
+        --shadow: 0 14px 34px rgba(0,0,0,.12);
       }
     }
 
-    *{ box-sizing: border-box; }
-    html,body{ height: 100%; }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    html{ scroll-behavior:smooth; }
+
     body{
-      margin: 0;
+      margin:0;
       font-family: var(--sans);
-      background: radial-gradient(1000px 700px at 10% -10%, rgba(124,92,255,.28), transparent 60%),
-                  radial-gradient(900px 650px at 100% 10%, rgba(37,211,102,.18), transparent 60%),
-                  var(--bg);
       color: var(--text);
-      line-height: 1.8;
+      line-height: 1.9;
+      background:
+        radial-gradient(900px 650px at 15% -10%, rgba(124,92,255,.30), transparent 60%),
+        radial-gradient(800px 600px at 100% 10%, rgba(37,211,102,.16), transparent 60%),
+        var(--bg);
     }
-    a{ color: var(--accent); text-decoration: none; }
-    a:hover{ text-decoration: underline; }
+
+    a{ color: var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    /* Accessibility */
+    :focus-visible{
+      outline: 3px solid rgba(124,92,255,.55);
+      outline-offset: 3px;
+      border-radius: 12px;
+    }
+
+    .skip{
+      position:absolute;
+      top:-60px;
+      right:16px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding:10px 12px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transition: top .2s ease;
+      z-index: 50;
+    }
+    .skip:focus{ top: 14px; }
+
     .wrap{
       max-width: var(--max);
       margin: 0 auto;
@@ -60,143 +94,223 @@
     }
 
     header.hero{
-      margin-top: 10px;
       border: 1px solid var(--border);
-      border-radius: calc(var(--radius) + 6px);
-      background: linear-gradient(135deg, rgba(124,92,255,.22), rgba(255,255,255,.04));
+      border-radius: calc(var(--radius) + 8px);
+      background:
+        linear-gradient(135deg, rgba(124,92,255,.22), rgba(255,255,255,.03));
       box-shadow: var(--shadow);
-      padding: 22px 18px;
+      padding: calc(var(--pad) + 6px);
       position: relative;
       overflow: hidden;
     }
     header.hero::after{
       content:"";
       position:absolute;
-      inset:-40px -60px auto auto;
-      width: 220px;
-      height: 220px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.28), transparent 55%);
-      transform: rotate(20deg);
+      inset:-60px -70px auto auto;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.26), transparent 55%);
+      transform: rotate(18deg);
       pointer-events:none;
+      filter: blur(.2px);
     }
 
     .brand{
       display:flex;
-      gap: 12px;
-      align-items:center;
+      gap: 14px;
+      align-items:flex-start;
       justify-content: space-between;
       flex-wrap: wrap;
     }
+
     .brand h1{
       margin: 0;
-      font-size: clamp(22px, 2.7vw, 34px);
+      font-size: clamp(22px, 2.6vw, 36px);
       letter-spacing: .2px;
+      line-height: 1.25;
     }
-    .brand .meta{
+
+    .meta{
       display:flex;
       gap: 10px;
       flex-wrap: wrap;
       align-items:center;
+      margin-top: 10px;
       color: var(--muted);
       font-size: 14px;
     }
+
     .pill{
       display:inline-flex;
       gap: 8px;
       align-items:center;
-      padding: 6px 10px;
+      padding: 7px 12px;
       border: 1px solid var(--border);
       border-radius: 999px;
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,.03);
       white-space: nowrap;
+      backdrop-filter: blur(8px);
     }
-    .dot{
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 4px rgba(124,92,255,.18);
+
+    .btnRow{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items:center;
+      margin-top: 4px;
     }
+
+    button{
+      font-family: inherit;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      backdrop-filter: blur(8px);
+    }
+    button:hover{
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.18);
+      transform: translateY(-1px);
+    }
+    button:active{ transform: translateY(0); }
+
+    .muted{ color: var(--muted); }
+    .small{ font-size: 13px; color: var(--muted); }
 
     .grid{
       display:grid;
       grid-template-columns: 1fr;
-      gap: 16px;
-      margin-top: 16px;
+      gap: var(--gap);
+      margin-top: var(--gap);
+      align-items:start;
     }
     @media (min-width: 980px){
-      .grid{ grid-template-columns: 360px 1fr; gap: 18px; align-items:start; }
+      .grid{ grid-template-columns: 360px 1fr; }
     }
 
     .card{
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      background: var(--card);
+      background: var(--surface);
       box-shadow: var(--shadow);
       overflow: hidden;
+      backdrop-filter: blur(10px);
     }
-    .card .card-h{
-      padding: 14px 14px 10px;
+
+    .card-h{
+      padding: 14px 14px 12px;
       border-bottom: 1px solid var(--border);
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.02);
       display:flex;
       align-items:center;
       justify-content: space-between;
       gap: 10px;
     }
-    .card .card-h h2{
+
+    .card-h h2{
       margin: 0;
       font-size: 16px;
       color: var(--text);
+      letter-spacing: .2px;
     }
-    .card .card-b{ padding: 14px; }
+
+    .card-b{ padding: 14px; }
+
+    /* TOC */
+    .tocWrap{
+      position: relative;
+    }
+
+    @media (min-width: 980px){
+      .tocWrap{
+        position: sticky;
+        top: 18px;
+        max-height: calc(100vh - 36px);
+        overflow: auto;
+        scrollbar-width: thin;
+      }
+    }
 
     .toc a{
       display:flex;
       justify-content: space-between;
       gap: 10px;
-      padding: 10px 10px;
-      border-radius: 12px;
+      padding: 10px 12px;
+      border-radius: 14px;
       color: var(--text);
       border: 1px solid transparent;
+      transition: background .12s ease, border-color .12s ease, transform .12s ease;
     }
     .toc a:hover{
-      background: var(--card2);
+      background: var(--surface2);
       border-color: var(--border);
       text-decoration: none;
+      transform: translateY(-1px);
     }
-    .toc a span{
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: 12px;
+    .toc a.active{
+      background: rgba(124,92,255,.16);
+      border-color: rgba(124,92,255,.35);
+      box-shadow: 0 0 0 4px rgba(124,92,255,.10) inset;
     }
 
+    /* Content */
     main article{
-      padding: 16px 16px 2px;
+      padding: 16px;
     }
+
+    /* تحسين القراءة: أقصى عرض للنص داخل المقال */
+    .prose{
+      max-width: 78ch;
+      margin-inline: auto;
+      padding-bottom: 4px;
+    }
+
     section{
-      padding: 14px 0;
+      padding: 16px 0;
       border-bottom: 1px dashed var(--border);
-      scroll-margin-top: 90px;
+      scroll-margin-top: 96px;
     }
-    section:last-child{ border-bottom: none; padding-bottom: 6px; }
+    section:last-child{ border-bottom:none; padding-bottom: 6px; }
+
     h3{
       margin: 0 0 10px;
-      font-size: 18px;
+      font-size: clamp(18px, 1.5vw, 20px);
+      line-height: 1.35;
+      letter-spacing: .15px;
     }
-    p{ margin: 0 0 10px; color: var(--text); }
-    ul{ margin: 10px 0 10px; padding: 0 18px 0 0; }
-    li{ margin: 8px 0; color: var(--text); }
-    .muted{ color: var(--muted); }
+
+    p{ margin: 0 0 10px; }
+
+    ul,ol{
+      margin: 10px 0;
+      padding: 0 18px 0 0;
+    }
+    li{ margin: 8px 0; }
+
+    code{
+      font-family: var(--mono);
+      font-size: 0.92em;
+      padding: 2px 6px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      direction: ltr;
+      unicode-bidi: plaintext;
+    }
 
     .callout{
       border: 1px solid var(--border);
       background: rgba(255,255,255,.04);
-      border-radius: 14px;
-      padding: 12px;
-      margin: 10px 0;
+      border-radius: 16px;
+      padding: 12px 14px;
+      margin: 12px 0;
     }
     .callout strong{ display:block; margin-bottom: 6px; }
+
     .badge{
       display:inline-flex;
       align-items:center;
@@ -204,33 +318,37 @@
       padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,.03);
       color: var(--muted);
       font-size: 13px;
       margin: 4px 6px 4px 0;
+      white-space: nowrap;
     }
     .badge i{
-      width: 10px; height: 10px; border-radius: 99px; display:inline-block;
+      width: 10px; height: 10px; border-radius: 999px; display:inline-block;
       background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(124,92,255,.16);
     }
-    .badge.ok i{ background: var(--ok); box-shadow: 0 0 0 4px rgba(37,211,102,.15); }
-    .badge.warn i{ background: var(--warn); box-shadow: 0 0 0 4px rgba(255,176,32,.15); }
-    .badge.bad i{ background: var(--bad); box-shadow: 0 0 0 4px rgba(255,77,79,.15); }
+    .badge.ok i{ background: #25d366; box-shadow: 0 0 0 4px rgba(37,211,102,.15); }
+    .badge.warn i{ background: #ffb020; box-shadow: 0 0 0 4px rgba(255,176,32,.15); }
+    .badge.bad i{ background: #ff4d4f; box-shadow: 0 0 0 4px rgba(255,77,79,.15); }
 
     details{
       border: 1px solid var(--border);
-      border-radius: 14px;
+      border-radius: 16px;
       background: rgba(255,255,255,.03);
       padding: 10px 12px;
-      margin: 10px 0;
+      margin: 12px 0;
     }
     details[open]{ background: rgba(255,255,255,.04); }
     summary{
       cursor:pointer;
-      font-weight: 650;
+      font-weight: 700;
       color: var(--text);
+      list-style: none;
     }
     summary::-webkit-details-marker{ display:none; }
+
     .hr{
       height: 1px;
       background: var(--border);
@@ -238,53 +356,57 @@
     }
 
     .footer{
-      margin-top: 16px;
+      margin-top: var(--gap);
       padding: 16px;
       border: 1px solid var(--border);
       border-radius: var(--radius);
       background: rgba(255,255,255,.03);
       color: var(--muted);
       font-size: 14px;
+      backdrop-filter: blur(10px);
     }
 
-    .btnRow{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 10px;
+    /* Mobile TOC (optional collapsible wrapper) */
+    .tocMobile{
+      display:none;
     }
-    button{
-      font-family: inherit;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.05);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 12px;
-      cursor: pointer;
+    @media (max-width: 979px){
+      .tocMobile{ display:block; margin-top: var(--gap); }
+      .tocDesktop{ display:none; }
+      main article{ padding: 14px; }
     }
-    button:hover{ background: rgba(255,255,255,.08); }
-    .small{ font-size: 13px; color: var(--muted); }
 
+    /* Print */
     @media print{
-      body{ background: #fff; color: #000; }
-      .card, header.hero, .footer{ box-shadow: none; }
-      a{ color: #000; text-decoration: underline; }
-      .btnRow{ display:none; }
+      body{ background:#fff; color:#000; }
+      .card, header.hero, .footer{ box-shadow:none; }
+      a{ color:#000; text-decoration: underline; }
+      .btnRow, .skip{ display:none; }
+      .tocDesktop{ display:none; }
+      .tocMobile{ display:none; }
+      .prose{ max-width: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      button, .toc a{ transition:none; }
     }
   </style>
 </head>
 
 <body>
+  <a class="skip" href="#content">تخطي إلى المحتوى</a>
+
   <div class="wrap">
     <header class="hero">
       <div class="brand">
         <div>
           <h1>سياسة الخصوصية — Infinite Aura</h1>
           <div class="meta">
-                
             <span class="pill">آخر تحديث: <strong id="lastUpdated">25 ديسمبر 2025</strong></span>
           </div>
         </div>
+
         <div class="btnRow">
           <button type="button" onclick="window.print()">طباعة / حفظ PDF</button>
           <button type="button" onclick="toggleAll(true)">فتح كل الأقسام</button>
@@ -292,364 +414,475 @@
         </div>
       </div>
 
-      <p class="muted" style="margin-top:10px">
+      <p class="muted" style="margin-top:12px">
         هذه السياسة تشرح كيف يجمع تطبيق <strong>Infinite Aura</strong> بياناتك ويستخدمها ويحميها.
         صُممت لتكون مفهومة وواضحة، ومتوافقة — قدر الإمكان — مع متطلبات قانون حماية البيانات الشخصية الأردني رقم 24 لسنة 2023
-        (النافذ اعتبارًا من 17 مارس 2024). 
+        (النافذ اعتبارًا من 17 مارس 2024).
       </p>
-      
-      <!-- <div class="callout">
-        <strong>ملحوظة مهمة (اقرأها):</strong>
-        <p class="muted" style="margin:0">
-          هذه السياسة ليست استشارة قانونية. إذا كان لديك نموذج عمل خاص (مثلاً بيع بيانات، تكاملات خارجية، إعلانات، ملفات تعريف ارتباط…)،
-          يلزم مراجعة قانونية متخصصة قبل النشر النهائي.
-        </p>
-      </div> -->
-      
     </header>
 
+    <!-- Mobile TOC -->
+    <details class="card tocMobile">
+      <summary class="card-h" style="user-select:none">
+        <h2 style="margin:0; font-size:16px">فهرس سريع</h2>
+        <span class="small">اضغط للفتح</span>
+      </summary>
+      <div class="card-b toc" id="tocMobile">
+        <a href="#s1">1) من نحن ومن هو “المتحكم بالبيانات”؟</a>
+        <a href="#s2">2) نطاق هذه السياسة وتعريفات أساسية</a>
+        <a href="#s3">3) البيانات التي نجمعها (بالتفصيل)</a>
+        <a href="#s3a">3-أ) مستندات توثيق المراكز والتحقق</a>
+        <a href="#s4">4) لماذا نعالج بياناتك؟ (الأغراض)</a>
+        <a href="#s5">5) الأساس القانوني للمعالجة (الأردن)</a>
+        <a href="#s6">6) البيانات الحساسة وبيانات الأطفال</a>
+        <a href="#s7">7) التشفير والأمان (E2EE)</a>
+        <a href="#s8">8) مشاركة البيانات ومن يستطيع الوصول؟</a>
+        <a href="#s8a">8-أ) مزودو الخدمة (المعالجون) ومع من تُشارك البيانات</a>
+        <a href="#s9">9) الإشعارات وFCM والتواصل</a>
+        <a href="#s10">10) الموقع الجغرافي وخرائط Google</a>
+        <a href="#s11">11) الاحتفاظ بالبيانات والحذف</a>
+        <a href="#s12">12) حقوقك وفق القانون الأردني</a>
+        <a href="#s13">13) نقل البيانات خارج الأردن</a>
+        <a href="#s13a">13-أ) مستخدمون من خارج الأردن (النطاق الدولي)</a>
+        <a href="#s14">14) كيف تتواصل معنا؟ الشكاوى والطلبات</a>
+        <a href="#s15">15) تغييرات السياسة</a>
+      </div>
+    </details>
+
     <div class="grid">
-      <!-- TOC -->
-      <aside class="card">
+      <!-- Desktop TOC -->
+      <aside class="card tocDesktop">
         <div class="card-h">
           <h2>فهرس سريع</h2>
           <span class="small">اضغط للانتقال</span>
         </div>
-        <div class="card-b toc" id="toc">
-          <a href="#s1">1) من نحن ومن هو “المتحكم بالبيانات”؟ </a>
-          <a href="#s2">2) نطاق هذه السياسة وتعريفات أساسية </a>
-          <a href="#s3">3) البيانات التي نجمعها (بالتفصيل) </a>
-          <a href="#s4">4) لماذا نعالج بياناتك؟ (الأغراض) </a>
-          <a href="#s5">5) الأساس القانوني للمعالجة (الأردن) </a>
-          <a href="#s6">6) البيانات الحساسة وبيانات الأطفال </a>
-          <a href="#s7">7) التشفير والأمان (E2EE) </a>
-          <a href="#s8">8) مشاركة البيانات ومن يستطيع الوصول؟ </a>
-          <a href="#s9">9) الإشعارات وFCM والتواصل </a>
-          <a href="#s10">10) الموقع الجغرافي وخرائط Google </a>
-          <a href="#s11">11) الاحتفاظ بالبيانات والحذف </a>
-          <a href="#s12">12) حقوقك وفق القانون الأردني </a>
-          <a href="#s13">13) نقل البيانات خارج الأردن </a>
-          <a href="#s14">14) كيف تتواصل معنا؟ الشكاوى والطلبات </a>
-          <a href="#s15">15) تغييرات السياسة </a>
+        <div class="card-b toc tocWrap" id="toc">
+          <a href="#s1">1) من نحن ومن هو “المتحكم بالبيانات”؟</a>
+          <a href="#s2">2) نطاق هذه السياسة وتعريفات أساسية</a>
+          <a href="#s3">3) البيانات التي نجمعها (بالتفصيل)</a>
+          <a href="#s3a">3-أ) مستندات توثيق المراكز والتحقق</a>
+          <a href="#s4">4) لماذا نعالج بياناتك؟ (الأغراض)</a>
+          <a href="#s5">5) الأساس القانوني للمعالجة (الأردن)</a>
+          <a href="#s6">6) البيانات الحساسة وبيانات الأطفال</a>
+          <a href="#s7">7) التشفير والأمان (E2EE)</a>
+          <a href="#s8">8) مشاركة البيانات ومن يستطيع الوصول؟</a>
+          <a href="#s8a">8-أ) مزودو الخدمة (المعالجون) ومع من تُشارك البيانات</a>
+          <a href="#s9">9) الإشعارات وFCM والتواصل</a>
+          <a href="#s10">10) الموقع الجغرافي وخرائط Google</a>
+          <a href="#s11">11) الاحتفاظ بالبيانات والحذف</a>
+          <a href="#s12">12) حقوقك وفق القانون الأردني</a>
+          <a href="#s13">13) نقل البيانات خارج الأردن</a>
+          <a href="#s13a">13-أ) مستخدمون من خارج الأردن (النطاق الدولي)</a>
+          <a href="#s14">14) كيف تتواصل معنا؟ الشكاوى والطلبات</a>
+          <a href="#s15">15) تغييرات السياسة</a>
         </div>
       </aside>
 
       <!-- CONTENT -->
-      <main class="card">
+      <main class="card" id="content">
         <div class="card-h">
           <h2>نص السياسة</h2>
         </div>
+
         <article>
+          <div class="prose">
 
-          <section id="s1">
-            <h3>1) من نحن ومن هو “المتحكم بالبيانات”؟</h3>
-            <p>
-              تطبيق <strong>Infinite Aura</strong> (“التطبيق”) هو نظام ذكي لدعم الفحص الأولي للتوحد وإدارة الجلسات والعلاجات والحجوزات
-              والتواصل بين الأطراف (وليّ الأمر، المركز، المدرّب، الإدارة).
-            </p>
-            <div class="callout">
-              <strong>المتحكم بالبيانات (Controller):</strong>
-              <p class="muted" style="margin:0">
-                <strong>Infinite Aura</strong><br/>
-                العنوان: <strong>الأردن محافظة العقبة</strong><br/>
-                البريد الإلكتروني للخصوصية: <strong>app.asd.cure@gmail.com</strong><br/>
-                هاتف/واتساب: <strong>+962 77 735 2268</strong>
+            <section id="s1">
+              <h3>1) من نحن ومن هو “المتحكم بالبيانات”؟</h3>
+              <p>
+                تطبيق <strong>Infinite Aura</strong> (“التطبيق”) هو نظام ذكي لدعم الفحص الأولي للتوحد وإدارة الجلسات والعلاجات والحجوزات
+                والتواصل بين الأطراف (وليّ الأمر، المركز، المدرّب، الإدارة).
               </p>
-            </div>
-            <p class="muted">
-              “المتحكم بالبيانات” هو الجهة التي تحدد لماذا وكيف تتم معالجة البيانات الشخصية. “المعالج” هو طرف يعالج البيانات نيابةً عنا
-              (مثل مزود الاستضافة السحابية).
-            </p>
-          </section>
+              <div class="callout">
+                <strong>المتحكم بالبيانات (Controller):</strong>
+                <p class="muted" style="margin:0">
+                  <strong>Infinite Aura</strong><br/>
+                  العنوان: <strong>الأردن محافظة العقبة</strong><br/>
+                  البريد الإلكتروني للخصوصية: <strong>app.asd.cure@gmail.com</strong><br/>
+                  هاتف/واتساب: <strong style="direction: ltr; text-align: right;">+962 77 735 2268</strong>
+                </p>
+              </div>
+            </section>
 
-          <section id="s2">
-            <h3>2) نطاق هذه السياسة وتعريفات أساسية</h3>
-            <p>تنطبق هذه السياسة على:</p>
-            <ul>
-              <li>تطبيق Infinite Aura للهواتف (Android/iOS) وأي واجهات مرتبطة به.</li>
-              <li>البيانات التي تُنشأ داخل التطبيق أو تُرسل لنا عبر الدعم.</li>
-            </ul>
-
-            <details>
-              <summary>تعريفات سريعة</summary>
-              <div class="hr"></div>
+            <section id="s2">
+              <h3>2) نطاق هذه السياسة وتعريفات أساسية</h3>
+              <p>تنطبق هذه السياسة على:</p>
               <ul>
-                <li><strong>بيانات شخصية:</strong> أي معلومات تُعرّف شخصًا طبيعيًا مباشرةً أو غير مباشرة (مثل الاسم، البريد، الموقع…).</li>
-                <li><strong>بيانات حساسة:</strong> تشمل بيانات الصحة/الحالة الجسدية أو العقلية، والبيانات البيومترية… إلخ.</li>
-                <li><strong>المستخدم:</strong> ولي أمر / مركز / مدرّب / مشرف / مشرف فرعي.</li>
-                <li><strong>الفرد (Individual):</strong> الطفل/الشخص الذي تُسجّل له جلسات ونتائج داخل التطبيق.</li>
+                <li>تطبيق Infinite Aura للهواتف (Android/iOS) وأي واجهات مرتبطة به.</li>
+                <li>البيانات التي تُنشأ داخل التطبيق أو تُرسل لنا عبر الدعم.</li>
               </ul>
-            </details>
-          </section>
 
-          <section id="s3">
-            <h3>3) البيانات التي نجمعها (بالتفصيل “الممل”)</h3>
+              <details>
+                <summary>تعريفات سريعة</summary>
+                <div class="hr"></div>
+                <ul>
+                  <li><strong>بيانات شخصية:</strong> أي معلومات تُعرّف شخصًا طبيعيًا مباشرةً أو غير مباشرة (مثل الاسم، البريد، الموقع…).</li>
+                  <li><strong>بيانات حساسة:</strong> تشمل بيانات الصحة/الحالة الجسدية أو العقلية، والبيانات البيومترية… إلخ.</li>
+                  <li><strong>المستخدم:</strong> ولي أمر / مركز / مدرّب / مشرف / مشرف فرعي.</li>
+                  <li><strong>الفرد (Individual):</strong> الطفل/الشخص الذي تُسجّل له جلسات ونتائج داخل التطبيق.</li>
+                </ul>
+              </details>
+            </section>
 
-            <p><span class="badge"><i></i>حساب المستخدم</span></p>
-            <ul>
-              <li><strong>بيانات تسجيل/دخول:</strong> البريد الإلكتروني، كلمة المرور (تُدار عبر Firebase Auth)، و/أو تحقق OTP للبريد.</li>
-              <li><strong>بيانات تواصل اختيارية:</strong> رقم الهاتف (للتحقق عبر SMS)، الدولة/رمز الدولة، اللغة المفضلة.</li>
-              <li><strong>الدور والصلاحيات:</strong> وليّ أمر/مركز/مدرّب/مشرف/مشرف فرعي.</li>
-            </ul>
+            <section id="s3">
+              <h3>3) البيانات التي نجمعها</h3>
 
-            <p><span class="badge warn"><i></i>ملف “الفرد” (طفل/شخص)</span></p>
-            <ul>
-              <li>الاسم الأول واسم العائلة، الجنس، تاريخ الميلاد (اختياري حسب الاستخدام)، ملاحظات.</li>
-              <li>صورة شخصية للفرد (اختيارية) تُرفع إلى التخزين السحابي.</li>
-              <li>بيانات ولي الأمر داخل ملف الفرد (اختياري): الاسم/صلة القرابة/البريد.</li>
-              <li>بيانات الجدولة: موعد الجلسة القادمة والتنبيه قبلها (عند استخدام التذكير).</li>
-            </ul>
+              <p><span class="badge"><i></i>حساب المستخدم</span></p>
+              <ul>
+                <li><strong>بيانات تسجيل/دخول:</strong> البريد الإلكتروني، كلمة المرور (تُدار عبر Firebase Auth)، و/أو تحقق OTP للبريد.</li>
+                <li><strong>بيانات تواصل اختيارية:</strong> رقم الهاتف (للتحقق عبر SMS)، الدولة/رمز الدولة، اللغة المفضلة.</li>
+                <li><strong>الدور والصلاحيات:</strong> وليّ أمر/مركز/مدرّب/مشرف/مشرف فرعي.</li>
+              </ul>
 
-            <p><span class="badge bad"><i></i>بيانات الجلسات ونتائج “الفحص/المتابعة”</span></p>
-            <ul>
-              <li>صورة الجلسة (تُستخدم للتحليل داخل الجهاز ثم تُرفع <strong>مشفّرة</strong> إلى التخزين).</li>
-              <li>إجابات الاستبيان/الأنشطة (تُخزن <strong>مشفّرة</strong> داخل قاعدة البيانات).</li>
-              <li>درجات/مؤشرات (مثل photo_score / questionnaire_score / combined_score…)</li>
-            </ul>
+              <p><span class="badge warn"><i></i>ملف “الفرد” (طفل/شخص)</span></p>
+              <ul>
+                <li>الاسم الأول واسم العائلة، الجنس، تاريخ الميلاد (اختياري حسب الاستخدام)، ملاحظات.</li>
+                <li>صورة شخصية للفرد (اختيارية) تُرفع إلى التخزين السحابي.</li>
+                <li>بيانات ولي الأمر داخل ملف الفرد (اختياري): الاسم/صلة القرابة/البريد.</li>
+                <li>بيانات الجدولة: موعد الجلسة القادمة والتنبيه قبلها (عند استخدام التذكير).</li>
+              </ul>
 
-            <p><span class="badge"><i></i>الحجوزات والتواصل مع المراكز</span></p>
-            <ul>
-              <li>طلب الحجز: اسم ولي الأمر، بريده، نص الرسالة، الوقت المفضل، ووقت الموعد النهائي عند الموافقة/إعادة الجدولة.</li>
-              <li>حالة الطلب: pending / approved / rejected / rescheduled + سبب الرفض عند وجوده.</li>
-            </ul>
+              <p><span class="badge bad"><i></i>بيانات الجلسات ونتائج “الفحص/المتابعة”</span></p>
+              <ul>
+                <li>صورة الجلسة (تُستخدم للتحليل داخل الجهاز ثم تُرفع <strong>مشفّرة</strong> إلى التخزين).</li>
+                <li>إجابات الاستبيان/الأنشطة (تُخزن <strong>مشفّرة</strong> داخل قاعدة البيانات).</li>
+                <li>درجات/مؤشرات (مثل photo_score / questionnaire_score / combined_score…)</li>
+              </ul>
 
-            <p><span class="badge"><i></i>الإشعارات</span></p>
-            <ul>
-              <li>رموز توكن Firebase Cloud Messaging (FCM) على جهازك لتوصيل الإشعارات.</li>
-              <li>سجل إشعارات داخل التطبيق (عنوان/نص/وقت/رابط داخلي) إن تم تفعيله.</li>
-            </ul>
+              <p><span class="badge"><i></i>الحجوزات والتواصل مع المراكز</span></p>
+              <ul>
+                <li>طلب الحجز: اسم ولي الأمر، بريده، نص الرسالة، الوقت المفضل، ووقت الموعد النهائي عند الموافقة/إعادة الجدولة.</li>
+                <li>حالة الطلب: pending / approved / rejected / rescheduled و سبب الرفض عند وجوده.</li>
+              </ul>
 
-            <p><span class="badge"><i></i>بيانات عامة للمراكز (الدليل العام)</span></p>
-            <ul>
-              <li>وصف المركز، العنوان، أيام وساعات العمل، رقم الهاتف، رابط الموقع، ورابط خرائط Google.</li>
-              <li>هذه البيانات تُعرض للعموم داخل “دليل المراكز” عندما يختار المركز النشر.</li>
-            </ul>
+              <p><span class="badge"><i></i>الإشعارات</span></p>
+              <ul>
+                <li>رموز توكن Firebase Cloud Messaging (FCM) على جهازك لتوصيل الإشعارات.</li>
+                <li>سجل إشعارات داخل التطبيق (عنوان/نص/وقت/رابط داخلي) إن تم تفعيله.</li>
+              </ul>
 
-            <details>
-              <summary>هل نجمع “بيانات جهاز” أو “تحليلات” أو “إعلانات”؟</summary>
-              <div class="hr"></div>
+              <p><span class="badge"><i></i>بيانات عامة للمراكز (الدليل العام)</span></p>
+              <ul>
+                <li>وصف المركز، العنوان، أيام وساعات العمل، رقم الهاتف، رابط الموقع، ورابط خرائط Google.</li>
+                <li>هذه البيانات تُعرض للعموم داخل “دليل المراكز” عندما يختار المركز النشر.</li>
+              </ul>
+
+              <details>
+                <summary>هل نجمع “بيانات جهاز” أو “تحليلات” أو “إعلانات”؟</summary>
+                <div class="hr"></div>
+                <p class="muted">
+                  نحن لا نستهدف الإعلانات داخل التطبيق افتراضًا، ولا نبيع بياناتك. قد تجمع أنظمة التشغيل/متاجر التطبيقات بيانات تقنية قياسية
+                  (مثل نوع الجهاز/إصدار النظام) لأغراض الأمان والتشغيل.
+                </p>
+              </details>
+            </section>
+
+            <section id="s3a">
+              <h3>3-أ) مستندات توثيق المراكز والتحقق</h3>
+
+              <p>
+                عند تسجيل حساب “مركز” أو عند طلب إعادة التوثيق، قد نطلب رفع مستندات تثبت هوية/ترخيص المركز لأغراض التحقق والامتثال
+                (مثل: رخصة/سجل/وثائق رسمية مشابهة بحسب الحالة).
+              </p>
+
+              <div class="callout">
+                <strong>ما الذي قد يتضمنه هذا النوع من البيانات؟</strong>
+                <ul class="muted" style="margin:0; padding-right:18px">
+                  <li>صور/ملفات مستندات رسمية يرفعها المركز للتحقق.</li>
+                  <li>بيانات تشغيلية مرتبطة بالمستند (اسم الملف، نوعه، حجمه، تاريخ الرفع، وحالة التحقق).</li>
+                </ul>
+              </div>
+
+              <div class="callout">
+                <strong>من يمكنه الوصول؟</strong>
+                <p class="muted" style="margin:0">
+                  الوصول يكون محصورًا على حساب المركز نفسه، وعلى الحسابات الإدارية المخولة داخل النظام (مثل المشرف/المشرف الفرعي حسب الصلاحيات)
+                  لغرض المراجعة واتخاذ قرار التوثيق.
+                </p>
+              </div>
+
               <p class="muted">
-                نحن لا نستهدف الإعلانات داخل التطبيق افتراضًا، ولا نبيع بياناتك. قد تجمع أنظمة التشغيل/متاجر التطبيقات بيانات تقنية قياسية
-                (مثل نوع الجهاز/إصدار النظام) لأغراض الأمان والتشغيل. إذا أضفت لاحقًا أدوات Analytics/Ads يجب تحديث هذه السياسة فورًا.
+                نحتفظ بمستندات التوثيق طالما كانت مطلوبة لعملية التحقق أو للامتثال، وقد يتم حذفها أو استبدالها عند قبول التوثيق أو عند إعادة الرفع،
+                أو عند حذف الحساب، مع مراعاة أي التزامات قانونية للاحتفاظ (إن وجدت).
               </p>
-            </details>
-          </section>
+            </section>
 
-          <section id="s4">
-            <h3>4) لماذا نعالج بياناتك؟ (الأغراض)</h3>
-            <ul>
-              <li>إنشاء الحساب وتسجيل الدخول والتحقق (بريد/OTP/هاتف).</li>
-              <li>إدارة ملفات الأفراد والجلسات والنتائج وتتبع التقدم عبر الزمن.</li>
-              <li>إرسال إشعارات تشغيلية: تذكير جلسة، تحديث حالة حجز، مشاركة فرد، إلخ.</li>
-              <li>تمكين دليل المراكز والحجوزات والتواصل المباشر.</li>
-              <li>الحماية من إساءة الاستخدام، والتحقيق في الأعطال، وتحسين الأداء.</li>
-              <li>الامتثال للمتطلبات القانونية والتنظيمية عند الحاجة.</li>
-            </ul>
-          </section>
-
-          <section id="s5">
-            <h3>5) الأساس القانوني للمعالجة (الأردن)</h3>
-            <p>
-              بموجب قانون حماية البيانات الشخصية الأردني رقم 24 لسنة 2023، المعالجة تكون أساسًا على
-              <strong>الموافقة المسبقة</strong> من صاحب البيانات، ما لم يسمح القانون باستثناءات محددة.
-            </p>
-            <div class="callout">
-              <strong>كيف نطبق ذلك عمليًا داخل التطبيق؟</strong>
-              <ul class="muted" style="margin:0; padding-right:18px">
-                <li>نطلب منك إدخال البيانات بإرادتك (إنشاء حساب/إضافة فرد/رفع صورة/إرسال حجز).</li>
-                <li>صلاحيات النظام (الكاميرا/الموقع/الإشعارات) لا تعمل إلا بعد موافقتك من إعدادات الجهاز.</li>
-                <li>يمكنك سحب الموافقة عبر إيقاف الصلاحيات أو طلب حذف البيانات (انظر قسم الحقوق).</li>
-              </ul>
-            </div>
-          </section>
-
-          <section id="s6">
-            <h3>6) البيانات الحساسة وبيانات الأطفال</h3>
-            <p>
-              التطبيق يتعامل مع بيانات قد تُصنف “حساسة” لأنها ترتبط بالصحة/الحالة الذهنية أو قد تتضمن بيانات بيومترية
-              (مثل صورة الوجه لأغراض التحليل داخل الجهاز). القانون الأردني يذكر الصحة والبيانات البيومترية ضمن “البيانات الحساسة”.
-            </p>
-
-            <details open>
-              <summary>التزاماتنا تجاه الأطفال/من لا يملك الأهلية</summary>
-              <div class="hr"></div>
+            <section id="s4">
+              <h3>4) لماذا نعالج بياناتك؟ (الأغراض)</h3>
               <ul>
-                <li>نفترض أن ولي الأمر/الوصي هو من ينشئ الملف ويوافق على إدخال بيانات الطفل داخل التطبيق.</li>
-                <li>نقصر مشاركة ملف الطفل ونتائجه على الأطراف المرتبطة به داخل التطبيق (ولي أمر/مركز/مدرب) وفق صلاحيات واضحة.</li>
-                <li>يمكن لولي الأمر طلب الوصول/التعديل/الحذف في أي وقت.</li>
+                <li>إنشاء الحساب وتسجيل الدخول والتحقق (بريد/OTP/هاتف).</li>
+                <li>إدارة ملفات الأفراد والجلسات والنتائج وتتبع التقدم عبر الزمن.</li>
+                <li>إرسال إشعارات تشغيلية: تذكير جلسة، تحديث حالة حجز، مشاركة فرد، إلخ.</li>
+                <li>تمكين دليل المراكز والحجوزات والتواصل المباشر.</li>
+                <li>الحماية من إساءة الاستخدام، والتحقيق في الأعطال، وتحسين الأداء.</li>
+                <li>الامتثال للمتطلبات القانونية والتنظيمية عند الحاجة.</li>
               </ul>
-            </details>
-          </section>
+            </section>
 
-          <section id="s7">
-            <h3>7) التشفير والأمان (E2EE) — “ليش السياسة طويلة؟ لأنه مهم”</h3>
+            <section id="s5">
+              <h3>5) الأساس القانوني للمعالجة (الأردن)</h3>
+              <p>
+                بموجب قانون حماية البيانات الشخصية الأردني رقم 24 لسنة 2023، المعالجة تكون أساسًا على
+                <strong>الموافقة المسبقة</strong> من صاحب البيانات، ما لم يسمح القانون باستثناءات محددة.
+              </p>
+              <div class="callout">
+                <strong>كيف نطبق ذلك عمليًا داخل التطبيق؟</strong>
+                <ul class="muted" style="margin:0; padding-right:18px">
+                  <li>نطلب منك إدخال البيانات بإرادتك (إنشاء حساب/إضافة فرد/رفع صورة/إرسال حجز).</li>
+                  <li>صلاحيات النظام (الكاميرا/الموقع/الإشعارات) لا تعمل إلا بعد موافقتك من إعدادات الجهاز.</li>
+                  <li>يمكنك سحب الموافقة عبر إيقاف الصلاحيات أو طلب حذف البيانات (انظر قسم الحقوق).</li>
+                </ul>
+              </div>
+            </section>
 
-            <p>
-              بعض المحتوى داخل Infinite Aura يُعتبر شديد الحساسية (صورة الجلسة + إجابات الاستبيان).
-              لذلك نطبّق <strong>تشفير طرف-لطرف (End-to-End Encryption)</strong> لهذه الأجزاء تحديدًا:
-            </p>
-
-            <div class="callout">
-              <strong>كيف يعمل التشفير في التطبيق (مختصر تقني واضح):</strong>
-              <ul class="muted" style="margin:0; padding-right:18px">
-                <li>يتم إنشاء <strong>مفتاح بيانات فريد لكل جلسة</strong> (32 بايت).</li>
-                <li>نشفّر “إجابات الاستبيان” و“صورة الجلسة” على جهازك قبل الرفع، باستخدام AES-GCM.</li>
-                <li>يتم “لف” مفتاح الجلسة لكل مستلم مصرح (ولي الأمر/المدرب/المركز…) وتخزينه داخل <code style="font-family:var(--mono)">session.e2ee.wrapped_keys</code>.</li>
-                <li>إذا لم يكن لدى المستلم مفاتيح جاهزة بعد، يُسجل في <code style="font-family:var(--mono)">pending_uids</code> ليتم استكمال اللف لاحقًا.</li>
-              </ul>
-            </div>
-
-            <p class="muted">
-              هذا التصميم يعني أن التخزين السحابي وقاعدة البيانات يحتفظان <strong>بالبيانات المشفرة فقط</strong>، وفك التشفير يحدث على الأجهزة
-              التي تملك المفاتيح المناسبة:contentReference[oaicite:6]{index=6}.
-            </p>
-
-            <details>
-              <summary>ماذا عن “صورة وجه الطفل”؟ هل نخزنها؟</summary>
-              <div class="hr"></div>
+            <section id="s6">
+              <h3>6) البيانات الحساسة وبيانات الأطفال</h3>
+              <p>
+                التطبيق يتعامل مع بيانات قد تُصنف “حساسة” لأنها ترتبط بالصحة/الحالة الذهنية أو قد تتضمن بيانات بيومترية
+                (مثل صورة الوجه لأغراض التحليل داخل الجهاز).
+              </p>
               <p class="muted">
-                داخل التطبيق يتم تحليل الصورة على الجهاز لاستخراج مؤشرات (مثل الابتسامة/اتجاه الوجه) لتحويلها إلى “درجة”.
-                وبعدها — إذا قررت حفظ الجلسة — يتم رفع الصورة ضمن بيانات الجلسة <strong>مشفّرة</strong> (وليست عامة).
+                استخدام التطبيق لإضافة بيانات طفل/قاصر يجب أن يكون من قبل ولي أمر/وصي قانوني أو بموافقته.
+                نحن لا نستهدف جمع بيانات مباشرة من الأطفال دون إشراف ولي الأمر.
               </p>
-            </details>
 
-            <p>
-              <span class="badge ok"><i></i>تقنيات حماية إضافية</span>
-              <span class="badge"><i></i>ضوابط صلاحيات حسب الدور</span>
-              <span class="badge"><i></i>قواعد وصول (Firestore/Storage Rules)</span>
-            </p>
-          </section>
+              <details open>
+                <summary>التزاماتنا تجاه الأطفال/من لا يملك الأهلية</summary>
+                <div class="hr"></div>
+                <ul>
+                  <li>نفترض أن ولي الأمر/الوصي هو من ينشئ الملف ويوافق على إدخال بيانات الطفل داخل التطبيق.</li>
+                  <li>نقصر مشاركة ملف الطفل ونتائجه على الأطراف المرتبطة به داخل التطبيق (ولي أمر/مركز/مدرب) وفق صلاحيات واضحة.</li>
+                  <li>يمكن لولي الأمر طلب الوصول/التعديل/الحذف في أي وقت.</li>
+                </ul>
+              </details>
+            </section>
 
-          <section id="s8">
-            <h3>8) مشاركة البيانات ومن يستطيع الوصول؟</h3>
-            <p>داخل التطبيق توجد أدوار مختلفة. الوصول يتم حسب الدور والربط/المشاركة:</p>
-            <ul>
-              <li><strong>ولي الأمر:</strong> يدير ملفات الأفراد المرتبطين به، ويرسل طلبات حجز للمراكز.</li>
-              <li><strong>المركز:</strong> يدير أفراد المركز وجلساتهم، ويستقبل طلبات الحجز ويوافق/يرفض/يعيد جدولة.</li>
-              <li><strong>المدرب:</strong> يصل للأفراد المربوطين به داخل نطاق العمل ويعمل الجلسات حسب الصلاحيات.</li>
-              <li><strong>المشرف/المشرف الفرعي:</strong> صلاحيات إدارية (مع قيود مثل الدولة للمشرف الفرعي حسب التطبيق).</li>
-            </ul>
+            <section id="s7">
+              <h3>7) التشفير والأمان (E2EE)</h3>
 
-            <div class="callout">
-              <strong>متى نشارك بياناتك مع طرف ثالث؟</strong>
-              <p class="muted" style="margin:0">
-                عادةً لا نشارك بياناتك خارج منظومة التطبيق إلا لتقديم الخدمة (مزود الاستضافة/الإشعارات)، أو إذا طلبت ذلك أنت (مثلاً مشاركة ملف مع مركز محدد)،
-                أو إذا طُلب منا قانونيًا.
+              <p>
+                بعض المحتوى داخل Infinite Aura يُعتبر شديد الحساسية (صورة الجلسة و إجابات الاستبيان).
+                لذلك نطبّق <strong>تشفير طرف-لطرف (End-to-End Encryption)</strong> لهذه الأجزاء تحديدًا:
               </p>
-            </div>
-          </section>
 
-          <section id="s9">
-            <h3>9) الإشعارات وFCM والتواصل</h3>
-            <p>
-              لإرسال الإشعارات (مثل تذكير جلسة أو تحديث حالة حجز) نستخدم Firebase Cloud Messaging (FCM).
-              هذا يتطلب تخزين “توكن جهاز” مرتبط بحسابك داخل قاعدة البيانات.
-            </p>
-            <p class="muted">
-              وفق توثيق المشروع، توكنات FCM وسجل الإشعارات تُخزن ضمن مساحة المستخدم وتُستخدم لأغراض الإشعار فقط:contentReference[oaicite:7]{index=7}.
-            </p>
-            <details>
-              <summary>كيف توقف الإشعارات؟</summary>
-              <div class="hr"></div>
-              <ul>
-                <li>من إعدادات الجهاز: أوقف إشعارات التطبيق.</li>
-                <li>من داخل التطبيق: قد يطلب إعادة ربط التوكن بعد تغيير إعدادات النظام.</li>
-              </ul>
-            </details>
-          </section>
+              <div class="callout">
+                <strong>كيف يعمل التشفير في التطبيق (مختصر تقني واضح):</strong>
+                <ul class="muted" style="margin:0; padding-right:18px">
+                  <li>يتم إنشاء <strong>مفتاح بيانات فريد لكل جلسة</strong> (32 بايت).</li>
+                  <li>نشفّر “إجابات الاستبيان” و“صورة الجلسة” على جهازك قبل الرفع، باستخدام AES-GCM.</li>
+                  <li>يتم “لف” مفتاح الجلسة لكل مستلم مصرح (ولي الأمر/المدرب/المركز…) وتخزينه داخل <code>session.e2ee.wrapped_keys</code>.</li>
+                  <li>إذا لم يكن لدى المستلم مفاتيح جاهزة بعد، يُسجل في <code>pending_uids</code> ليتم استكمال اللف لاحقًا.</li>
+                </ul>
+              </div>
 
-          <section id="s10">
-            <h3>10) الموقع الجغرافي وخرائط Google</h3>
-            <p>
-              خيار الموقع يُستخدم — عند رغبة المركز — لتعبئة رابط خرائط Google تلقائيًا في الصفحة العامة للمركز.
-              إذا منحت الإذن، يتم الحصول على الإحداثيات وتحويلها إلى رابط Maps. 
-            </p>
-            <div class="callout">
-              <strong>مهم:</strong>
-              <p class="muted" style="margin:0">
-                مشاركة رابط خرائط Google في “الصفحة العامة للمركز” تعني أن الإحداثيات قد تظهر ضمن الرابط للعامة إذا قام المركز بنشره.
-                يمكنك ترك هذا الحقل فارغًا أو وضع رابط عام لا يحتوي إحداثيات دقيقة.
-              </p>
-            </div>
-          </section>
-
-          <section id="s11">
-            <h3>11) الاحتفاظ بالبيانات والحذف</h3>
-            <ul>
-              <li><strong>حساب المستخدم:</strong> يبقى طالما الحساب نشط أو حتى تطلب حذفه.</li>
-              <li><strong>بيانات الأفراد والجلسات:</strong> تبقى طالما تحتاجها لمتابعة التقدم أو حتى تطلب حذفها.</li>
-              <li><strong>الحجوزات:</strong> تبقى لأغراض السجل التشغيلي، ثم قد تُحذف/تُؤرشف لاحقًا (حسب إعدادات التطبيق/الإدارة).</li>
-              <li><strong>توكنات FCM:</strong> قد تُزال عند تسجيل الخروج أو تغيير الجهاز، أو عند طلبك ذلك.</li>
-            </ul>
-            <details>
-              <summary>حذف البيانات نهائيًا: ماذا يعني؟</summary>
-              <div class="hr"></div>
               <p class="muted">
-                الحذف النهائي يعني حذف السجلات من قاعدة البيانات والملفات من التخزين السحابي ضمن حدود إمكانيات النظام،
-                مع مراعاة أي التزامات قانونية للاحتفاظ (إن وجدت).
+                هذا التصميم يعني أن التخزين السحابي وقاعدة البيانات يحتفظان <strong>بالبيانات المشفرة</strong>، وفك التشفير يحدث على الأجهزة
+                التي تمتلك المفاتيح المناسبة وضمن الصلاحيات المعتمدة داخل التطبيق.
               </p>
-            </details>
-          </section>
 
-          <section id="s12">
-            <h3>12) حقوقك وفق القانون الأردني</h3>
-            <p>
-              يذكر ملخص القانون الأردني أن لأصحاب البيانات حقوقًا مثل: الاطلاع/الوصول، سحب الموافقة، تصحيح/تحديث البيانات،
-              طلب الحذف (“الحق في النسيان”)، الاعتراض على المعالجة/الملفنة، نقل نسخة من البيانات، والإبلاغ عن خرق البيانات.
-            </p>
-            <div class="callout">
-              <strong>كيف تمارس حقوقك داخل Infinite Aura؟</strong>
-              <ol class="muted" style="margin:0; padding-right:18px">
-                <li>أرسل طلبًا إلى بريد الخصوصية: <strong>app.asd.cure@gmail.com</strong> بعنوان: “طلب حقوق بيانات — Infinite Aura”.</li>
-                <li>اذكر نوع الطلب: وصول/تعديل/حذف/نقل/سحب موافقة…</li>
-                <li>أرفق ما يثبت ملكية الحساب (مثلاً بريد الحساب أو رقم الهاتف المسجل) لحماية بياناتك.</li>
-                <li>سنرد خلال مدة معقولة حسب حجم الطلب وتعقيده، وبما يتوافق مع القانون.</li>
-              </ol>
-            </div>
-          </section>
+              <details>
+                <summary>هل يتم حفظ أي بيانات مرتبطة بالمفاتيح؟</summary>
+                <div class="hr"></div>
+                <p class="muted">
+                  لضمان استمرارية الوصول للبيانات المشفرة عبر الأجهزة (حسب إعدادات الحساب)، يحتفظ النظام بمواد/نسخ احتياطية <strong>مشفرة</strong>
+                  مرتبطة بمفاتيح التشفير ضمن حساب المستخدم. لا تُستخدم هذه البيانات إلا لتمكين وظائف التشفير داخل التطبيق (مثل الاسترجاع/المزامنة)
+                  وضمن ضوابط الوصول والصلاحيات.
+                </p>
+              </details>
 
-          <section id="s13">
-            <h3>13) نقل البيانات خارج الأردن</h3>
-            <p>
-              تُستضاف بيانات التطبيق عبر خدمات سحابية ( Firebase/Google Cloud). 
-             
-            </p>
-            <details>
-              <summary>ما الذي نفعله لتقليل مخاطر النقل؟</summary>
-              <div class="hr"></div>
+              <details>
+                <summary>ماذا عن “صورة وجه الطفل”؟ هل نخزنها؟</summary>
+                <div class="hr"></div>
+                <p class="muted">
+                  داخل التطبيق يتم تحليل الصورة على الجهاز لاستخراج مؤشرات (مثل الابتسامة/اتجاه الوجه) لتحويلها إلى “درجة”.
+                  وبعدها — إذا قررت حفظ الجلسة — يتم رفع الصورة ضمن بيانات الجلسة <strong>مشفّرة</strong> (وليست عامة).
+                </p>
+              </details>
+
+              <p>
+                <span class="badge ok"><i></i>تقنيات حماية إضافية</span>
+                <span class="badge"><i></i>ضوابط صلاحيات حسب الدور</span>
+                <span class="badge"><i></i>قواعد وصول (Firestore/Storage Rules)</span>
+              </p>
+            </section>
+
+            <section id="s8">
+              <h3>8) مشاركة البيانات ومن يستطيع الوصول؟</h3>
+              <p>داخل التطبيق توجد أدوار مختلفة. الوصول يتم حسب الدور والربط/المشاركة:</p>
               <ul>
-                <li>نستخدم أقل قدر ممكن من البيانات اللازمة لتقديم الخدمة.</li>
-                <li>نطبق تشفير طرف-لطرف لمحتوى الجلسات الحسّاس بحيث يبقى غير مقروء حتى عند الاستضافة:contentReference[oaicite:10]{index=10}.</li>
-                <li>نراقب تحديثات الإطار التنظيمي الأردني (مثل تنظيم وحدة حماية البيانات الشخصية).</li>
+                <li><strong>ولي الأمر:</strong> يدير ملفات الأفراد المرتبطين به، ويرسل طلبات حجز للمراكز.</li>
+                <li><strong>المركز:</strong> يدير أفراد المركز وجلساتهم، ويستقبل طلبات الحجز ويوافق/يرفض/يعيد جدولة.</li>
+                <li><strong>المدرب:</strong> يصل للأفراد المربوطين به داخل نطاق العمل ويعمل الجلسات حسب الصلاحيات.</li>
+                <li><strong>المشرف/المشرف الفرعي:</strong> صلاحيات إدارية (مع قيود مثل الدولة للمشرف الفرعي حسب التطبيق).</li>
               </ul>
-            </details>
-          </section>
 
-         
+              <div class="callout">
+                <strong>متى نشارك بياناتك مع طرف ثالث؟</strong>
+                <p class="muted" style="margin:0">
+                  عادةً لا نشارك بياناتك خارج منظومة التطبيق إلا لتقديم الخدمة (مزود الاستضافة/الإشعارات)، أو إذا طلبت ذلك أنت (مثلاً مشاركة ملف مع مركز محدد)،
+                  أو إذا طُلب منا قانونيًا.
+                </p>
+              </div>
+            </section>
 
-          <section id="s14">
-            <h3>14) كيف تتواصل معنا؟ الشكاوى والطلبات</h3>
-            <div class="callout">
-              <strong>قنوات التواصل الرسمية:</strong>
-              <p class="muted" style="margin:0">
-                بريد الخصوصية: <strong>app.asd.cure@gmail.com</strong><br/>
-                الدعم العام: <strong>app.asd.cure@gmail.com</strong><br/>
-                العنوان: <strong>الأردن محافظة العقبة</strong>
+            <section id="s8a">
+              <h3>8-أ) مزودو الخدمة (المعالجون) ومع من تُشارك البيانات</h3>
+              <p>
+                لتقديم الخدمة وتشغيل التطبيق بشكل آمن، نستخدم مزودي خدمات (معالجين) يعالجون بيانات محددة نيابةً عنا وفق تعليماتنا
+                ولأغراض تشغيلية بحتة.
               </p>
-            </div>
-            <p class="muted">
-              إذا كان لديك شكوى تتعلق بالخصوصية أو أمن البيانات، الرجاء ذكر: (نوع الحساب، وصف المشكلة، التاريخ/الوقت، لقطات شاشة إن وجدت).
-            </p>
-          </section>
 
-          <section id="s15">
-            <h3>15) تغييرات السياسة</h3>
-            <p>
-              قد نحدّث هذه السياسة عند إضافة ميزات جديدة (مثل تحليلات، تكاملات خارجية، أو تغييرات قانونية).
-              عند التحديث سنغيّر تاريخ “آخر تحديث” أعلى الصفحة، وقد نرسل إشعارًا داخل التطبيق عند الضرورة.
-            </p>
-          </section>
+              <div class="callout">
+                <strong>مزودي الخدمة المستخدمين:</strong>
+                <ul class="muted" style="margin:0; padding-right:18px">
+                  <li>خدمات Google/Firebase (مثل: المصادقة، قاعدة البيانات، التخزين السحابي، الإشعارات عبر FCM، ووظائف الخادم عند الحاجة).</li>
+                </ul>
+              </div>
 
+              <p class="muted">
+                لا نبيع بياناتك. مشاركة البيانات تكون فقط لتقديم الخدمة، أو بناءً على طلبك داخل التطبيق (مثل مشاركة ملف مع مركز)،
+                أو عند الالتزام القانوني.
+              </p>
+            </section>
+
+            <section id="s9">
+              <h3>9) الإشعارات وFCM والتواصل</h3>
+              <p>
+                لإرسال الإشعارات (مثل تذكير جلسة أو تحديث حالة حجز) نستخدم Firebase Cloud Messaging (FCM).
+                هذا يتطلب تخزين “توكن جهاز” مرتبط بحسابك داخل قاعدة البيانات.
+              </p>
+              <p class="muted">
+                نحتفظ بسجل إشعارات داخل التطبيق (العنوان/النص/وقت/رابط داخلي) لعرضها لك لاحقًا داخل حسابك.
+              </p>
+              <p class="muted">
+                بعض الإشعارات قد تتضمن بيانات تشغيلية لازمة لفتح الشاشة الصحيحة داخل التطبيق (مثل معرف طلب حجز أو جلسة)،
+                ولا نستخدمها للإعلانات أو التتبع الإعلاني.
+              </p>
+
+              <details>
+                <summary>كيف توقف الإشعارات؟</summary>
+                <div class="hr"></div>
+                <ul>
+                  <li>من إعدادات الجهاز: أوقف إشعارات التطبيق.</li>
+                  <li>من داخل التطبيق: قد يطلب إعادة ربط التوكن بعد تغيير إعدادات النظام.</li>
+                </ul>
+              </details>
+            </section>
+
+            <section id="s10">
+              <h3>10) الموقع الجغرافي وخرائط Google</h3>
+              <p>
+                خيار الموقع يُستخدم — عند رغبة المركز — لتعبئة رابط خرائط Google تلقائيًا في الصفحة العامة للمركز.
+                إذا منحت الإذن، يتم الحصول على الإحداثيات وتحويلها إلى رابط Maps.
+              </p>
+              <div class="callout">
+                <strong>مهم:</strong>
+                <p class="muted" style="margin:0">
+                  مشاركة رابط خرائط Google في “الصفحة العامة للمركز” تعني أن الإحداثيات قد تظهر ضمن الرابط للعامة إذا قام المركز بنشره.
+                  يمكنك ترك هذا الحقل فارغًا أو وضع رابط عام لا يحتوي إحداثيات دقيقة.
+                </p>
+              </div>
+            </section>
+
+            <section id="s11">
+              <h3>11) الاحتفاظ بالبيانات والحذف</h3>
+              <ul>
+                <li><strong>حساب المستخدم:</strong> يبقى طالما الحساب نشط أو حتى تطلب حذفه.</li>
+                <li><strong>بيانات الأفراد والجلسات:</strong> تبقى طالما تحتاجها لمتابعة التقدم أو حتى تطلب حذفها.</li>
+                <li><strong>الحجوزات:</strong> تبقى لأغراض السجل التشغيلي، ثم قد تُحذف/تُؤرشف لاحقًا (حسب إعدادات التطبيق/الإدارة).</li>
+                <li><strong>توكنات FCM:</strong> قد تُزال عند تسجيل الخروج أو تغيير الجهاز، أو عند طلبك ذلك.</li>
+              </ul>
+
+              <details>
+                <summary>الحذف النهائي: ما الذي يُحذف فورًا وما الذي قد يستغرق وقتًا؟</summary>
+                <div class="hr"></div>
+                <p class="muted">
+                  عند طلب حذف الحساب أو بيانات معينة، نعمل على حذف البيانات من قاعدة البيانات والملفات المخزنة ضمن حدود إمكانيات النظام.
+                  بعض السجلات قد تحتاج وقتًا للحذف الكامل (مثل الملفات المخزنة أو النسخ الاحتياطية التقنية إن وجدت) أو قد نحتفظ ببعض السجلات
+                  التشغيلية للامتثال أو منع إساءة الاستخدام إذا كان ذلك مطلوبًا قانونيًا.
+                </p>
+                <ul class="muted">
+                  <li><strong>حذف الحساب:</strong> يشمل تعطيل/حذف بيانات الحساب المرتبطة به وفق إجراءات النظام.</li>
+                  <li><strong>حذف ملف/جلسة:</strong> يشمل حذف السجلات المرتبطة بها قدر الإمكان، وقد يشمل إزالة الملفات المرتبطة من التخزين.</li>
+                  <li><strong>استثناءات:</strong> قد نحتفظ بحد أدنى من السجلات عند وجود التزام قانوني أو لأسباب أمنية/تشغيلية مشروعة.</li>
+                </ul>
+              </details>
+            </section>
+
+            <section id="s12">
+              <h3>12) حقوقك وفق القانون الأردني</h3>
+              <p>
+                يذكر ملخص القانون الأردني أن لأصحاب البيانات حقوقًا مثل: الاطلاع/الوصول، سحب الموافقة، تصحيح/تحديث البيانات،
+                طلب الحذف (“الحق في النسيان”)، الاعتراض على المعالجة/الملفنة، نقل نسخة من البيانات، والإبلاغ عن خرق البيانات.
+              </p>
+              <div class="callout">
+                <strong>كيف تمارس حقوقك داخل Infinite Aura؟</strong>
+                <ol class="muted" style="margin:0; padding-right:18px">
+                  <li>أرسل طلبًا إلى بريد الخصوصية: <strong>app.asd.cure@gmail.com</strong> بعنوان: “طلب حقوق بيانات — Infinite Aura”.</li>
+                  <li>اذكر نوع الطلب: وصول/تعديل/حذف/نقل/سحب موافقة…</li>
+                  <li>أرفق ما يثبت ملكية الحساب (مثلاً بريد الحساب أو رقم الهاتف المسجل) لحماية بياناتك.</li>
+                  <li>سنرد خلال مدة معقولة حسب حجم الطلب وتعقيده، وبما يتوافق مع القانون.</li>
+                </ol>
+              </div>
+            </section>
+
+            <section id="s13">
+              <h3>13) نقل البيانات خارج الأردن</h3>
+              <p>تُستضاف بيانات التطبيق عبر خدمات سحابية ( Firebase/Google Cloud).</p>
+              <details>
+                <summary>ما الذي نفعله لتقليل مخاطر النقل؟</summary>
+                <div class="hr"></div>
+                <ul>
+                  <li>نستخدم أقل قدر ممكن من البيانات اللازمة لتقديم الخدمة.</li>
+                  <li>نطبق تشفير طرف-لطرف لمحتوى الجلسات الحسّاس بحيث يبقى غير مقروء حتى عند الاستضافة.</li>
+                  <li>نراقب تحديثات الإطار التنظيمي الأردني (مثل تنظيم وحدة حماية البيانات الشخصية).</li>
+                </ul>
+              </details>
+            </section>
+
+            <section id="s13a">
+              <h3>13-أ) مستخدمون من خارج الأردن (النطاق الدولي)</h3>
+              <p>
+                نحن جهة متحكمة بالبيانات مقرها المملكة الأردنية الهاشمية، لذلك نلتزم بقانون حماية البيانات الشخصية الأردني.
+                وبحسب مكان إقامة المستخدم، قد تنطبق أيضًا قوانين خصوصية إضافية (مثل قوانين الاتحاد الأوروبي أو قوانين محلية أخرى).
+              </p>
+              <p class="muted">
+                إذا كانت هناك متطلبات إلزامية خاصة بمكان إقامتك تتعلق بحقوق الخصوصية أو طريقة المعالجة، سنعمل على التعامل معها
+                بما يتوافق مع المتطلبات الواجبة التطبيق وبالحد الممكن عمليًا ضمن طبيعة الخدمة.
+              </p>
+            </section>
+
+            <section id="s14">
+              <h3>14) كيف تتواصل معنا؟ الشكاوى والطلبات</h3>
+              <div class="callout">
+                <strong>قنوات التواصل الرسمية:</strong>
+                <p class="muted" style="margin:0">
+                  بريد الخصوصية: <strong>app.asd.cure@gmail.com</strong><br/>
+                  الدعم العام: <strong>app.asd.cure@gmail.com</strong><br/>
+                  العنوان: <strong>الأردن محافظة العقبة</strong>
+                </p>
+              </div>
+              <p class="muted">
+                إذا كان لديك شكوى تتعلق بالخصوصية أو أمن البيانات، الرجاء ذكر: (نوع الحساب، وصف المشكلة، التاريخ/الوقت، لقطات شاشة إن وجدت).
+              </p>
+              <div class="callout">
+                <strong>طلبات حذف البيانات/الحساب:</strong>
+                <p class="muted" style="margin:0">
+                  لطلب حذف الحساب أو بيانات محددة، راسلنا على <strong>app.asd.cure@gmail.com</strong> بعنوان:
+                  <strong>طلب حذف بيانات — Infinite Aura</strong>، مع ذكر بريد الحساب/رقم الهاتف المسجل للتحقق.
+                </p>
+              </div>
+            </section>
+
+            <section id="s15">
+              <h3>15) تغييرات السياسة</h3>
+              <p>
+                قد نحدّث هذه السياسة عند إضافة ميزات جديدة (مثل تحليلات، تكاملات خارجية، أو تغييرات قانونية).
+                عند التحديث سنغيّر تاريخ “آخر تحديث” أعلى الصفحة، وقد نرسل إشعارًا داخل التطبيق عند الضرورة.
+              </p>
+            </section>
+
+          </div>
         </article>
       </main>
     </div>
@@ -657,7 +890,7 @@
     <div class="footer">
       <strong>ملحق (شفافية تقنية مختصرة):</strong>
       <p class="muted" style="margin-top:8px">
-        تم بناء هذه السياسة لتتطابق مع طريقة عمل Infinite Aura المذكورة في توثيق المشروع (التشفير الطرف-لطرف للجلسات + مسارات التخزين + توكنات FCM):contentReference[oaicite:12]{index=12}:contentReference[oaicite:13]{index=13}،
+        تم بناء هذه السياسة لتتطابق مع طريقة عمل Infinite Aura المذكورة في توثيق المشروع (التشفير الطرف-لطرف للجلسات و مسارات التخزين و توكنات FCM)،
         ومع ملخصات موثوقة حول قانون حماية البيانات الأردني رقم 24 لسنة 2023 (الموافقة، الحقوق، نقل البيانات خارج الأردن).
       </p>
       <p class="muted" style="margin:0">
@@ -675,27 +908,39 @@
       document.querySelectorAll("details").forEach(d => d.open = !!open);
     }
 
-    // تمييز الرابط الحالي في الفهرس عند التمرير
-    const sections = Array.from(document.querySelectorAll("main section"));
-    const tocLinks = Array.from(document.querySelectorAll("#toc a"));
-    const map = new Map(tocLinks.map(a => [a.getAttribute("href"), a]));
+    // تمييز الرابط الحالي في الفهرس عند التمرير (باستخدام class بدل inline styles)
+    const sections = Array.from(document.querySelectorAll("main article section"));
+    const tocLinksDesktop = Array.from(document.querySelectorAll("#toc a"));
+    const tocLinksMobile = Array.from(document.querySelectorAll("#tocMobile a"));
+    const allLinks = [...tocLinksDesktop, ...tocLinksMobile];
+
+    const linkMap = new Map(allLinks.map(a => [a.getAttribute("href"), a]));
+
+    function setActive(id){
+      allLinks.forEach(a => a.classList.remove("active"));
+      const a = linkMap.get("#" + id);
+      if(a) a.classList.add("active");
+      // فعّل نفس الرابط في النسخة الثانية (موبايل/ديسكتوب) إن وجد
+      tocLinksDesktop.forEach(x => { if(x.getAttribute("href")==="#" + id) x.classList.add("active"); });
+      tocLinksMobile.forEach(x => { if(x.getAttribute("href")==="#" + id) x.classList.add("active"); });
+    }
 
     const observer = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
         if(!e.isIntersecting) return;
-        const id = "#" + e.target.id;
-        tocLinks.forEach(a => a.style.background = "transparent");
-        tocLinks.forEach(a => a.style.borderColor = "transparent");
-        const active = map.get(id);
-        if(active){
-          active.style.background = "rgba(255,255,255,.06)";
-          active.style.borderColor = "rgba(255,255,255,.18)";
-        }
+        setActive(e.target.id);
       });
     }, { rootMargin: "-45% 0px -50% 0px", threshold: 0.01 });
 
     sections.forEach(s => observer.observe(s));
+
+    // إغلاق فهرس الموبايل تلقائيًا بعد الضغط
+    document.querySelectorAll("#tocMobile a").forEach(a=>{
+      a.addEventListener("click", ()=>{
+        const details = document.querySelector("details.tocMobile");
+        if(details) details.open = false;
+      });
+    });
   </script>
 </body>
 </html>
-
